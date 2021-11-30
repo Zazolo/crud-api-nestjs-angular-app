@@ -1,0 +1,63 @@
+<header>
+    <h1>Bem-vindo(a) ao Simplescola</h1>
+    <h2>Tão simples quanto a página, assim é essa aplicação web;</h2>
+  </header>
+  <section *ngIf="introductionTextVisibility">
+    <p>
+      Esse WEB App é bem simples, porém demonstra todas as funcionalidades simples de um CRUD de um texto qualquer, 
+      associado à uma chave para reconhecimento no banco. Aqui nós chamaremos essa chave de "Sala" e o texto em sí será a Cola.
+      <br>
+      A funcionalidade é bem simples: Basta informar o nome da sala no primeiro campo, e caso a sala você terá acesso ao conteúdo, 
+      assim como a opção de excluir a sala, caso deseje. Ao editar o texto, as alterações são salvas automaticamente no servidor.
+      <br>
+      É uma aplicação simples, porém demonstra a ação CRUD simples com um servidor feito com o framework NestJS (NodeJS), usufruindo dos serviços da Amazon.
+    </p>
+  </section>
+  <section *ngIf="!introductionTextVisibility">
+    <h3>Informativos da conexão:</h3>
+    <table>
+      <tr>
+        <td>Propriedade</td>
+        <td>Valor</td>
+        <td>Timestamp</td>
+      </tr>
+      <tr>
+        <td>IP Host</td>
+        <td>{{serverProps.host.ip}}</td>
+        <td>{{serverProps.host.timestamp}}</td>
+      </tr>
+      <tr>
+        <td>IP Cliente</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Última interação</td>
+        <td><button routerLink="/logs">Logs da sessão</button></td>
+        <td></td>
+      </tr>
+      
+    </table>
+  </section>
+  <section *ngIf="introductionTextVisibility">
+    <h2>Vamos lá!</h2>
+    <h3>Informe o nome da <b>Sala</b>:</h3>
+    <form (submit)="startSala()">
+      <input type="text" placeholder="Nome da sala..." name="inputNomeSala" [(ngModel)]="inputNomeSala">
+      <button type="submit">Entrar na sala</button>
+    </form>
+  </section>
+  <section *ngIf="!introductionTextVisibility">
+    <h3>Sala: {{inputNomeSala}}</h3>
+    <button (click)="salvarTexto()">Salvar</button>
+    <br>
+    <textarea [(ngModel)]="inputTextArea" name="inputTextArea"></textarea>
+    {{inputTextArea}}
+    <br>
+    <button>Excluir</button>
+    <button>Limpar</button>
+    <button>Sair da sala</button>
+  </section>
+  <footer>
+    <h5>Desenvolvido por Tiago B. Corrêa - <button routerLink="/sobre">Sobre</button></h5>
+  </footer>

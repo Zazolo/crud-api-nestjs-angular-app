@@ -1,0 +1,12 @@
+table {
+    border-collapse: collapse;
+}
+table td, table th {
+    min-width: 10vw;
+    border: 1px solid black;
+}
+
+textarea{
+    min-width: 800px;
+    min-height: 250px;
+}
